@@ -1,2 +1,18 @@
-#Create a program in python which takes a date in format -> yy-mm-dd and converts it into an iso datetime string such as
-#'2011-04-20T14:03:20.193000-04:00'
+from datetime import datetime
+
+
+# # datetime.today().strftime('%Y-%m-%d')
+current_date = datetime.now()
+# # print(current_date.isoformat())
+
+converted = current_date.strftime('%Y-%m-%d')
+
+# print(converted)
+# .strftime('%Y-%m-%dT%H:%M:%S.%f%z')
+
+def dateConversion(date):
+    return current_date.isoformat()
+
+results = dateConversion(converted)
+
+print(results)

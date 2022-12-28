@@ -6,7 +6,7 @@ app = FastAPI()
 
 with open('./data.json') as f:
     data = json.load(f)
-data_length = len(data)~
+data_length = len(data)
 
 
 

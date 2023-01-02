@@ -1,0 +1,45 @@
+# Date Conversion OpenAPI
+
+openapi: 3.0.3
+
+info:
+  title: OpenAPI specification for  Date Conversion 
+  version: '1.0.0'
+  
+  
+externalDocs:
+  description: More information about the Date Conversion API
+  # url: http://dateconversion.com/api
+  
+servers:
+  - url: http://localhost:8000/api
+  - url: http://localhost:{port}/api
+    
+    variables:
+      port:
+        enum:
+          - '5000'
+          - '3000'
+        default: '3000'
+  
+tags:
+  - name: DateConversion
+    description: Date Conversion Operation
+    
+paths:
+  /courses:
+    summary: Operations for date conversion from ISO 8601 format to ISO standard time format
+    post:
+      tags:
+        - DateConversion
+      summary: Convert date from ISO 8601 format to ISO format
+      responses:
+        200:
+          description: Success
+        400:
+          description: Incorrect input
+        default:
+          description: Success
+        
+        
+  

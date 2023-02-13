@@ -1,9 +1,9 @@
 import json
 from jsonpath_rw import jsonpath, parse
 
-with open('\message.txt', 'r') as file:
+with open('F:\\PythonProjects\\python-exercises\\message.txt', 'r') as file:
     json_str = file.read()
-    json_data = json.loads(json_str)
+    json_data = json.load(json_str)
 
 
 # parse the jsonpath expression to match all fields with the keyword 'university' in them
@@ -11,6 +11,7 @@ jsonpath_expr = parse('$.canadianUniversities.*[*].courses.major.minor[*]')
 
 # find all matches in the json data
 matches = jsonpath_expr.find(json_data)
+
 
 # Iterate over each match
 for match in matches:
@@ -25,5 +26,5 @@ for match in matches:
             match.value['importantTag'] = [match.value['importantTag']]
 
 
-with open('\message.txt','w') as file:
+with open('\\message.txt','w') as file:
     json.dump(json_data, file, indent=4)

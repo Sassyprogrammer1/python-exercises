@@ -12,7 +12,14 @@ This repository contains a Dockerized version of a Python script that wraps valu
 python -m venv venv
 
 3. Activate the virtual environment:
-source venv/bin/activate
+    - Windows:
+        ```
+        myenv\Scripts\activate.bat
+        ```
+    - MacOS/Linux:
+        ```
+        source myenv/bin/activate
+        ```
 
 4. Install the required packages:
 pip install -r requirements.txt

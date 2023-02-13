@@ -1,7 +1,7 @@
 import json
 
 
-with open('F:\\PythonProjects\\python-exercises\\converted.json', 'r', encoding='utf-8') as file:
+with open('', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 
@@ -35,5 +35,5 @@ data = wrap_in_quotes('requirements', data)
 data = wrap_in_quotes('langRequirement', data)
 
 
-with open('F:\\PythonProjects\\python-exercises\\converted.json', 'w') as file:
+with open('', 'w') as file:
     json.dump(data, file, indent=4)

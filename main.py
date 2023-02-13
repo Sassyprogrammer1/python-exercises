@@ -15,20 +15,20 @@ def today():
     # To return the date range for the past 24 hours
     base = datetime.now()
     hours = [base - timedelta(hours=x) for x in range(24)]
-    return hours
+    return hours[0]
   
 @app.get("/lastweek")
 def this_week():
     base = datetime.today()
     date_list = [base - timedelta(days=x) for x in range(7)]
-    return date_list
+    return date_list[0]
 
 
 @app.get("/thismonth")
 def this_month():
     base = datetime.today()
     days = [base + timedelta(days=x-1) for x in range(31)]
-    return days
+    return days[0]
 
 
 

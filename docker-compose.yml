@@ -1,0 +1,8 @@
+version: '3'
+services:
+  script:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ./stringify:/app

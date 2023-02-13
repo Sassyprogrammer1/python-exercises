@@ -25,7 +25,8 @@ python -m venv venv
 pip install -r requirements.txt
 
 5. Run the following command to start a Docker container and run the Python script inside it:
-         ```
+```
+docker-compose up
+```
         
-        docker-compose up
-        ```
+        

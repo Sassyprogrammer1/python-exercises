@@ -1,0 +1,57 @@
+
+// GET universities/canadian_universities/_search
+
+// {
+//   "_source": ["Universityname", "candianRanking"],
+//   "size": 8,
+//   "sort": [
+//     {"candianRanking": {"order": "asc"}}
+//   ]
+// }
+
+
+    
+// GET universities/canadian_universities/_search
+// {
+//   "_source": ["*"],
+//   "size": 8,
+//   "query": {
+//     "exists": {
+//       "field": "candianRanking"
+//     }
+//   },
+//   "sort": [
+//     {"candianRanking": {"order": "asc"}}
+//   ]
+// }
+
+
+
+
+***
+GET universities/canadian_universities/_search
+{
+  "_source": ["*"],
+  "size": 8,
+  "query": {
+    "bool": {
+      "must": [
+        {
+          "exists": {
+            "field": "candianRanking"
+          }
+        },
+        {
+          "wildcard": {
+            "_index": "*University*"
+          }
+        }
+      ]
+    }
+  },
+  "sort": [
+    {"candianRanking": {"order": "asc"}}
+  ]
+}
+
+

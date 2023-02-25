@@ -1,6 +1,5 @@
 import json
 
-
 def wrap_in_quotes_and_delete_field(obj):
     # If the object is a dictionary, loop through its key-value pairs
     if isinstance(obj, dict):
@@ -10,6 +9,7 @@ def wrap_in_quotes_and_delete_field(obj):
         # carefully inserted   
         if 'cutOffMark' in obj:
             obj['cutOffMark'] = str(obj['cutOffMark'])
+
         # Wrap the values of the constant fields in quotes
         for field in ['tuition', 'applicationDeadline', 'requirements', 'langRequirement', 'additonalRequirements']:
             if field in obj:
@@ -25,12 +25,12 @@ def wrap_in_quotes_and_delete_field(obj):
 
 
 # Load the JSON data from the file
-with open('F:\\PythonProjects\\python-exercises\\out_with_tags(8).json', 'r', encoding='utf-8') as file:
+with open('F:\\PythonProjects\\python-exercises\\out_with_tags(12).json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 # Wrap the values of the constant fields in quotes and delete the 'domesticHighSchool' field
 data = wrap_in_quotes_and_delete_field(data)
 
 # Save the modified JSON data back to the file
-with open('F:\\PythonProjects\\python-exercises\\out_with_tags(8).json', 'w') as file:
+with open('F:\\PythonProjects\\python-exercises\\out_with_tags(12).json', 'w') as file:
     json.dump(data, file, indent=4)

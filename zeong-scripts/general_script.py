@@ -23,14 +23,15 @@ def wrap_in_quotes_and_delete_field(obj):
     else:
         return obj
 
+# F:\PythonProjects\python-exercises\new_uni-data
 
 # Load the JSON data from the file
-with open('F:\\PythonProjects\\python-exercises\\out_with_tags(12).json', 'r', encoding='utf-8') as file:
+with open('F:\\PythonProjects\\python-exercises\\new_uni-data\\out_with_tags(16).json', 'r', encoding='utf-8') as file:
     data = json.load(file)
 
 # Wrap the values of the constant fields in quotes and delete the 'domesticHighSchool' field
 data = wrap_in_quotes_and_delete_field(data)
 
 # Save the modified JSON data back to the file
-with open('F:\\PythonProjects\\python-exercises\\out_with_tags(12).json', 'w') as file:
+with open('F:\\PythonProjects\\python-exercises\\new_uni-data\\out_with_tags(16).json', 'w') as file:
     json.dump(data, file, indent=4)

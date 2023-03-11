@@ -1,0 +1,116 @@
+{
+    "businessFaculty": [
+      {
+        "name": "UBC",
+        "ranking": 1
+      },
+      {
+        "name": "Toronto",
+        "ranking": 1
+      },
+      {
+        "name": "Western",
+        "ranking": 5
+      },
+      {
+        "name": "York",
+        "ranking": 7
+      }
+    ],
+    "computerscienceFaculty": [
+      {
+        "name": "UBC",
+        "ranking": 1
+      },
+      {
+        "name": "Toronto",
+        "ranking": 1
+      },
+      {
+        "name": "Waterloo",
+        "ranking": 1
+      }
+    ],
+    "educationFaculty": [
+      {
+        "name": "UBC",
+        "ranking": 1
+      },
+      {
+        "name": "Toronto",
+        "ranking": 1
+      },
+      {
+        "name": "Western",
+        "ranking": 4
+      },
+      {
+        "name": "York",
+        "ranking": 6
+      }
+    ],
+    "nursingFaculty": [
+      {
+        "name": "UBC",
+        "ranking": 1
+      },
+      {
+        "name": "Toronto",
+        "ranking": 1
+      },
+      {
+        "name": "Dalhousie",
+        "ranking": 6
+      }
+    ],
+    "engineeringFaculty": [
+      {
+        "name": "UBC",
+        "ranking": 1
+      },
+      {
+        "name": "Toronto",
+        "ranking": 1
+      },
+      {
+        "name": "Waterloo",
+        "ranking": 3
+      }
+    ],
+    "mathFaculty": [
+      {
+        "name": "UBC",
+        "ranking": 1
+      },
+      {
+        "name": "Toronto",
+        "ranking": 1
+      },
+      {
+        "name": "Waterloo",
+        "ranking": 1
+      }
+    ],
+    "psychologyFaculty": [
+      {
+        "name": "UBC",
+        "ranking": 1
+      },
+      {
+        "name": "Toronto",
+        "ranking": 1
+      },
+      {
+        "name": "Western",
+        "ranking": 4
+      },
+      {
+        "name": "York",
+        "ranking": 6
+      },
+      {
+        "name": "Dalhousie",
+        "ranking": 8
+      }
+    ]
+  }

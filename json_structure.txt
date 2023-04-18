@@ -1,0 +1,11 @@
+-{}JSON
+  -{}University
+    -{}courses
+      -[]minor //The minor is an array that contains many other json objects just like 0
+	    -{} 0
+	      -{}admissionInfo
+	        -{}internationalHighSchool
+	          -{}chineseHighSchool
+	      -[]importantTag
+	     
+	

@@ -1,7 +1,7 @@
 import json
 
 # Load JSON data from file
-with open('new2.json', 'r', encoding='utf-8') as f:
+with open('F:\\PythonProjects\\map_chart\\converted_unis\\5.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 # print(data)
 # Access the "minor" array inside the "courses" object
@@ -33,6 +33,7 @@ for element in minor_array:
 
     # Create a new object and add key-value pairs from "courses" and "courses.minor"
     new_obj = {}
+
     new_obj['university_name'] = data[uni_name]['name']
     new_obj['acronym'] = data[uni_name]['acronym']
     new_obj['world_ranking'] = data[uni_name]['worldRanking']
@@ -54,9 +55,17 @@ for element in minor_array:
     new_obj['work_experience'] = element['workExperience']
     new_obj['ib_high_school_admission_info'] = element['admissionInfo']['internationalHighSchool']['chineseHighSchool']
     new_obj['chinese_high_school_admission_info'] = element['admissionInfo']['internationalHighSchool']['chineseHighSchool']
-    new_obj['important_tag'] = element['importantTag']
 
-    new_obj['ib_high_school_admission_info']
+    
+    if 'importantTag' in element:
+      new_obj['importantTag'] = element['importantTag']
+    else:
+      new_obj['importantTag'] = 'n/a' 
+
+    # new_obj['important_tag'] = element['importantTag']
+    # print(element['importantTag'])
+
+    # new_obj['ib_high_school_admission_info']
     # Add the new object to the list
     new_objects.append(new_obj)
     

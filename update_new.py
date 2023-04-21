@@ -2,9 +2,9 @@ import json
 
 # Load JSON data from file
 
-uni_name = 'massey_uni'
+uni_name = ''
 new_file_name = 'c_'+uni_name
-with open(f'F:\\PythonProjects\\map_chart\\z_converted_unis\\nz\\nz_json\\{uni_name}.json', 'r', encoding='utf-8') as f:
+with open(f'{uni_name}.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 # print(data)
 # Access the "minor" array inside the "courses" object
@@ -102,5 +102,5 @@ print(new_objects)
 
 
 
-with open(f'F:\\PythonProjects\\map_chart\\z_converted_unis\\aus\\converted_json\\{new_file_name}.json', 'w') as f:
+with open(f'{new_file_name}.json', 'w') as f:
     json.dump(new_objects, f)

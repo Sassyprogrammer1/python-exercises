@@ -15,7 +15,7 @@ new_file_name = 'c_'+uni_name
 path of uni should be uni-json + either aus,can or nz. 
 from 'raw-json
 """
-with open(f'\raw-json\aus_json{uni_name}.json', 'r', encoding='utf-8') as f:
+with open(f'\raw-json\nz_json\\{uni_name}.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 # Access the "minor" array inside the "courses" object

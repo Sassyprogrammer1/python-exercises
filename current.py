@@ -7,14 +7,15 @@ url = 'https://i8um1uxi40.execute-api.us-east-2.amazonaws.com/dev/api/v1/univers
 """All json files in  'aus,can & nz' folders are named 1.json, 2.json... 
 """
 
-uni_name = '1'
+uni_name = 'victoria_wellington'
 new_file_name = 'c_'+uni_name
 
 # path to read file
 """
 path of uni should be uni-json + either aus,can or nz. 
+from 'raw-json
 """
-with open(f'/uni-json/aus/{uni_name}.json', 'r', encoding='utf-8') as f:
+with open(f'\raw-json\aus_json{uni_name}.json', 'r', encoding='utf-8') as f:
     data = json.load(f)
 
 # Access the "minor" array inside the "courses" object
@@ -26,99 +27,12 @@ minor_array = data[uni_name]['courses']['minor']
 # Loop through the array and access each element
 new_objects = []
 for element in minor_array:
-
-    if 'admissionInfo' in element:
-        element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'] =  json.dumps(element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'])
-    else:
-        element['admissionInfo'] = {}
-
-
-    if 'internationalHighSchool' in element:
-        element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'] =  json.dumps(element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'])
-    else:
-        element['admissionInfo']['internationalHighSchool'] = {}
-
-
-    if 'IBHighSchool' in element:
-        element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'] =  json.dumps(element['admissionInfo'])
-    else:
-         element['admissionInfo']['internationalHighSchool']['IBHighSchool'] = {}
-
-
-    if 'applicationDeadline' in element:
-        element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'] =  json.dumps(element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'])
-    else:
-        element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'] = 'N/A'
-
-
-    if 'admissionInfo' in element:
-        element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'] =  json.dumps(element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'])
-    else:
-        element['admissionInfo'] = {}
-
-
-    if 'internationalHighSchool' in element:
-        element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'] =  json.dumps(element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'])
-    else:
-        element['admissionInfo']['internationalHighSchool'] = {}
-
-
-    if 'IBHighSchool' in element:
-        element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'] =  json.dumps(element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'])
-    else:
-        element['admissionInfo']['internationalHighSchool']['IBHighSchool'] = {}
-
-
-    if 'applicationDeadline' in element:
-        element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'] =  json.dumps(element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'])
-    else:
-        element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'] = 'N/A' 
-        
-
-    if 'internationalHighSchool' in element:
-        element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'] =  json.dumps(element['admissionInfo']['internationalHighSchool']['IBHighSchool']['applicationDeadline'])
-    else:
-        element['admissionInfo']['internationalHighSchool'] = {}
-
-
-    if 'IBHighSchool' in element:
-        element['admissionInfo']['internationalHighSchool']['IBHighSchool']['requirements']=  json.dumps(element['admissionInfo']['internationalHighSchool']['IBHighSchool']['requirements'])
-    else:
-        element['admissionInfo']['internationalHighSchool']['IBHighSchool'] = {}
-
-
-    if 'requirements' in element:
-        element['admissionInfo']['internationalHighSchool']['IBHighSchool']['requirements']=  json.dumps(element['admissionInfo']['internationalHighSchool']['IBHighSchool']['requirements'])
-    else:
-        element['admissionInfo']['internationalHighSchool']['IBHighSchool']['requirements'] = 'N/A'
-
-
-    if 'chineseHighSchool' in element:
-        element['admissionInfo']['internationalHighSchool']['chineseHighSchool']['applicationDeadline'] =  json.dumps(element['admissionInfo']['internationalHighSchool']['chineseHighSchool']['applicationDeadline'])
-    else:
-        element['admissionInfo']['internationalHighSchool']['chineseHighSchool'] = {}
-
-
-
-    if 'applicationDeadline' in element:
-        #applicationDeadline
-        element['admissionInfo']['internationalHighSchool']['chineseHighSchool']['applicationDeadline'] =  json.dumps(element['admissionInfo']['internationalHighSchool']['chineseHighSchool']['applicationDeadline'])
-    else:
-        element['admissionInfo']['internationalHighSchool']['chineseHighSchool']['applicationDeadline'] = 'N/A'
-
-
-        #requirements
-    if 'requirements' in element:
-        element['admissionInfo']['internationalHighSchool']['chineseHighSchool']['requirements'] =  json.dumps(element['admissionInfo']['internationalHighSchool']['chineseHighSchool']['requirements'])
-    else:
-        element['admissionInfo']['internationalHighSchool']['chineseHighSchool']['requirements'] = 'N/A'
-         
-
     # Create a new object and add key-value pairs from "courses" and "courses.minor"
     new_obj = {}
 
     new_obj['university_name'] = data[uni_name]['name']
     new_obj['acronym'] = data[uni_name]['acronym']
+    new_obj['domestic_ranking'] = data[uni_name]['newZealandRanking'] 
     new_obj['world_ranking'] = data[uni_name]['worldRanking']
     new_obj['address'] = data[uni_name]['address']
     new_obj['province'] = data[uni_name]['province']
@@ -136,24 +50,24 @@ for element in minor_array:
     new_obj['introduction'] = element['introduction']
     new_obj['url'] = element['url']
     new_obj['work_experience'] = element['workExperience']
-    new_obj['ib_high_school_admission_info'] = element['admissionInfo']['internationalHighSchool']['chineseHighSchool']
-    new_obj['chinese_high_school_admission_info'] = element['admissionInfo']['internationalHighSchool']['chineseHighSchool']
-
-    
+    if 'IBHighSchool' in element['admissionInfo']['internationalHighSchool']:
+        new_obj['ib_high_school_admission_info'] = element['admissionInfo']['internationalHighSchool']['IBHighSchool']
+    if 'chineseHighSchool' in element['admissionInfo']['internationalHighSchool']:
+        new_obj['chinese_high_school_admission_info'] = element['admissionInfo']['internationalHighSchool']['chineseHighSchool']
     if 'importantTag' in element:
       new_obj['important_tags'] = element['importantTag']
-      
-      response = requests.post(url, data=new_obj)
-      # Print the response content
-      print(response.content)
+    #   response = requests.post(url, data=new_obj)
+    #   # Print the response content
+    #   print(response.content)
     else:
       continue 
     # Add the new object to the list
     new_objects.append(new_obj)
 
 #path to save file
-    """path should be uni-json/converted
+    """path should be uni-json/
     """
-with open(f'/uni-json/converted{new_file_name}.json', 'w') as f:
+with open(f'F:\\PythonProjects\\converted\\{new_file_name}.json', 'w') as f:
     json.dump(new_objects, f)
 
+# print(data[uni_name]['australianRanking'])

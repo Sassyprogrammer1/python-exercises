@@ -1,21 +1,20 @@
 import json
 import requests
-url = 'https://i8um1uxi40.execute-api.us-east-2.amazonaws.com/dev/api/v1/university/create'
+url = 'https://6l2349vxk5.execute-api.us-east-2.amazonaws.com/dev/api/v1/university/create'
 # Load JSON data from file
 
 #Input uni name
 """All json files in  'aus,can & nz' folders are named 1.json, 2.json... 
 """
 
-uni_name = 'victoria_wellington'
+uni_name = 'york_uni'
 new_file_name = 'c_'+uni_name
 
 # path to read file
 """
 path of uni should be uni-json + either aus,can or nz. 
-from 'raw-json
 """
-with open(f'\raw-json\nz_json\\{uni_name}.json', 'r', encoding='utf-8') as f:
+with open(f'F:\\PythonProjects\\python-exercises\\raw-json\\aus_json\\{uni_name}.json', 'r', encoding='utf-8') as f:   
     data = json.load(f)
 
 # Access the "minor" array inside the "courses" object
@@ -32,7 +31,12 @@ for element in minor_array:
 
     new_obj['university_name'] = data[uni_name]['name']
     new_obj['acronym'] = data[uni_name]['acronym']
-    new_obj['domestic_ranking'] = data[uni_name]['newZealandRanking'] 
+    if 'newZealandRanking' in data[uni_name]:
+        new_obj['domestic_ranking'] = data[uni_name]['newZealandRanking']
+    elif 'australianRanking' in data[uni_name]:
+        new_obj['domestic_ranking'] = data[uni_name]['australianRanking']
+    elif 'canadianRanking' in data[uni_name]:
+        new_obj['domestic_ranking'] = data[uni_name]['canadianRanking']
     new_obj['world_ranking'] = data[uni_name]['worldRanking']
     new_obj['address'] = data[uni_name]['address']
     new_obj['province'] = data[uni_name]['province']
@@ -51,14 +55,14 @@ for element in minor_array:
     new_obj['url'] = element['url']
     new_obj['work_experience'] = element['workExperience']
     if 'IBHighSchool' in element['admissionInfo']['internationalHighSchool']:
-        new_obj['ib_high_school_admission_info'] = element['admissionInfo']['internationalHighSchool']['IBHighSchool']
+        new_obj['ib_high_school_admission_info'] = json.dumps(element['admissionInfo']['internationalHighSchool']['IBHighSchool'])
     if 'chineseHighSchool' in element['admissionInfo']['internationalHighSchool']:
-        new_obj['chinese_high_school_admission_info'] = element['admissionInfo']['internationalHighSchool']['chineseHighSchool']
+        new_obj['chinese_high_school_admission_info'] = json.dumps(element['admissionInfo']['internationalHighSchool']['chineseHighSchool'])
     if 'importantTag' in element:
       new_obj['important_tags'] = element['importantTag']
-    #   response = requests.post(url, data=new_obj)
-    #   # Print the response content
-    #   print(response.content)
+      response = requests.post(url, data=new_obj)
+      # Print the response content
+      print(response.content)
     else:
       continue 
     # Add the new object to the list
@@ -67,7 +71,7 @@ for element in minor_array:
 #path to save file
     """path should be uni-json/
     """
-with open(f'F:\\PythonProjects\\converted\\{new_file_name}.json', 'w') as f:
+with open(f'F:\\PythonProjects\\python-exercises\\converted\\{new_file_name}.json', 'w') as f:
     json.dump(new_objects, f)
 
 # print(data[uni_name]['australianRanking'])

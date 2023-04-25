@@ -1,20 +1,20 @@
 import json
 import requests
-url = 'https://6l2349vxk5.execute-api.us-east-2.amazonaws.com/dev/api/v1/university/create'
+url = 'https://fqi01cpa15.execute-api.us-east-2.amazonaws.com/dev/api/v1/university/create'
 # Load JSON data from file
 
 #Input uni name
 """All json files in  'aus,can & nz' folders are named 1.json, 2.json... 
 """
 
-uni_name = 'york_uni'
+uni_name = 'victoria_wellington'
 new_file_name = 'c_'+uni_name
 
 # path to read file
 """
 path of uni should be uni-json + either aus,can or nz. 
 """
-with open(f'F:\\PythonProjects\\python-exercises\\raw-json\\aus_json\\{uni_name}.json', 'r', encoding='utf-8') as f:   
+with open(f'F:\\PythonProjects\\python-exercises\\raw-json\\nz_json\\{uni_name}.json', 'r', encoding='utf-8') as f:   
     data = json.load(f)
 
 # Access the "minor" array inside the "courses" object
@@ -56,8 +56,54 @@ for element in minor_array:
     new_obj['work_experience'] = element['workExperience']
     if 'IBHighSchool' in element['admissionInfo']['internationalHighSchool']:
         new_obj['ib_high_school_admission_info'] = json.dumps(element['admissionInfo']['internationalHighSchool']['IBHighSchool'])
+
+    # if 'tuition' in element['admissionInfo']['internationalHighSchool']['IBHighSchool']:
+    #     new_obj['ibs_tuition'] = element['admissionInfo']['internationalHighSchool']['IBHighSchool']['tuition']
+    # else:
+    #     new_obj['ibs_tuition'] = {}
+
+    if '#text' in element['admissionInfo']['internationalHighSchool']['IBHighSchool']['tuition']:
+        new_obj['ibs_tuition_fee'] = element['admissionInfo']['internationalHighSchool']['IBHighSchool']['tuition']['#text']
+    else:
+        new_obj['ibs_tuition_fee'] = 'N/A'
+
+    if 'tuitionURL' in element['admissionInfo']['internationalHighSchool']['IBHighSchool']['tuition']:
+        new_obj['ibs_tuition_url'] = element['admissionInfo']['internationalHighSchool']['IBHighSchool']['tuition']['tuitionURL']
+    else:
+        new_obj['ibs_tuition_url'] = 'N/A'
+
+    if 'cutOffMark' in element['admissionInfo']['internationalHighSchool']['IBHighSchool']:
+        new_obj['ibs_cutoff_mark'] = element['admissionInfo']['internationalHighSchool']['IBHighSchool']['cutOffMark']
+    
+    else:
+        new_obj['ibs_cutoff_mark'] = 'N/A'
+
+
+        # print(new_obj['ibs_tuition'])
     if 'chineseHighSchool' in element['admissionInfo']['internationalHighSchool']:
         new_obj['chinese_high_school_admission_info'] = json.dumps(element['admissionInfo']['internationalHighSchool']['chineseHighSchool'])
+
+    # if 'tuition' in element['admissionInfo']['internationalHighSchool']['chineseHighSchool']:
+    #     new_obj['chs_tuition'] = element['admissionInfo']['internationalHighSchool']['chineseHighSchool']['tuition']
+    # else:
+    #     new_obj['chs_tuition'] = {}
+
+    if '#text' in element['admissionInfo']['internationalHighSchool']['chineseHighSchool']['tuition']:
+        new_obj['chs_tuition_fee'] = element['admissionInfo']['internationalHighSchool']['chineseHighSchool']['tuition']['#text']
+    else:
+        new_obj['chs_tuition_fee'] = 'N/A'
+
+    if 'tuitionURL' in element['admissionInfo']['internationalHighSchool']['chineseHighSchool']['tuition']:
+        new_obj['chs_tuition_url'] = element['admissionInfo']['internationalHighSchool']['chineseHighSchool']['tuition']['tuitionURL']
+    else:
+        new_obj['chs_tuition_url'] = 'N/A'
+
+    if 'cutOffMark' in element['admissionInfo']['internationalHighSchool']['chineseHighSchool']:
+        new_obj['chs_cutoff_mark'] = element['admissionInfo']['internationalHighSchool']['chineseHighSchool']['cutOffMark']
+    else:
+        new_obj['chs_cutoff_mark'] = 'N/A'
+
+        
     if 'importantTag' in element:
       new_obj['important_tags'] = element['importantTag']
       response = requests.post(url, data=new_obj)

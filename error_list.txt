@@ -1,0 +1,10 @@
+error_list:
+aus:
+curtin
+deakin
+monash
+royal_melbourne
+swinburne
+uni_of_south_wales
+nz:
+massey-uni
